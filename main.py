@@ -31,6 +31,26 @@ class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("hello.html")
 
+class CalculateHandler(BaseHandler):
+    def post(self):
+        vnos_razdalja = float(self.request.get("razdalja"))
+        vnos_pretvorba = int(self.request.get("izbira_pretvorbe"))
+
+        if vnos_pretvorba == 1:
+            rezultat = vnos_razdalja / 1.6
+
+
+        elif vnos_pretvorba == 2:
+            rezultat = vnos_razdalja * 1.6
+
+        else:
+            rezultat = "Prosimo izberite 1 za pretvorbo iz km v mi ali 2 za pretvorbo iz mi v km!"
+
+
+        podatki={"rezultat": rezultat, "vnos_razdalja": vnos_razdalja, "vnos_pretvorba": vnos_pretvorba}
+        return self.render_template("rezultat.html", podatki)
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/pretvorba', CalculateHandler),
 ], debug=True)

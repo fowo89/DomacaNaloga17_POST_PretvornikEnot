@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pretvornik enot</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <h2>Rezultat pretvorbe:</h2>
+    <br>
+    {% if vnos_pretvorba == 1 %}
+        <h2> {{ vnos_razdalja }} kilometrov je enako {{ rezultat }} milj.</h2>
+    {% elif vnos_pretvorba == 2 %}
+        <h2>{{ vnos_razdalja }} milj je enako {{ rezultat }} kilometrov.</h2>
+    {% else %}
+        <h2> {{ rezultat }} </h2>
+    {% endif %}
+    <br>
+    <form method="get" action="/">
+    <button type="submit">Vrni se na zacetno stran</button>
+</form>
+
+</body>
+</html>
